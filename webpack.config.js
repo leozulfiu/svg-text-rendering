@@ -13,7 +13,7 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-        title: 'SVG Text Rendering',
+        template: 'src/index_template.html'
     })
   ],
   output: {
