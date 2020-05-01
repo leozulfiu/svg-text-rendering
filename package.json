@@ -4,8 +4,7 @@
     "build": "webpack",
     "start": "webpack-dev-server --open"
   },
-  "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "clean-webpack-plugin": "^3.0.0",
     "html-webpack-plugin": "^4.3.0",
