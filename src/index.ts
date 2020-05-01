@@ -1,3 +1,5 @@
+import * as d3 from 'd3-selection';
+
 const component = (): HTMLElement => {
   const element = document.createElement('div');
 
@@ -7,3 +9,6 @@ const component = (): HTMLElement => {
 };
 
 document.body.appendChild(component());
+
+d3.selectAll('div')
+  .style('color', '#a1de1c');
