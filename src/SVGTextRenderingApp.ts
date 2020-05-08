@@ -33,14 +33,17 @@ export class SVGTextRenderingApp {
   public drawText(input: string): void {
     const svg = d3.select('svg');
 
-    svg.selectAll("text")
-      .data([input])
-      .join(
-        enter => enter.append('text').attr("fill", 'blue').text(d => d),
-        update => update.attr('fill', 'gray'),
-        exit => exit.remove()
-      )
-      .attr("y", 20)
-      .text(d => d);
+    const textUpdate = svg.selectAll("text")
+      .data([input]);
+
+    const textEnter = textUpdate.enter()
+      .append('text');
+
+    textUpdate.merge(textEnter)
+      .attr("fill", 'blue')
+      .text(d => d)
+      .attr("y", 20);
+
+    textUpdate.exit().remove();
   }
 }
