@@ -31,11 +31,16 @@ export class SVGTextRenderingApp {
   }
 
   public drawText(input: string): void {
-    d3.select("svg")
-      .append("circle")
-      .attr("cx", 30)
-      .attr("cy", 30)
-      .attr('r', 20)
-      .attr('fill', 'purple');
+    const svg = d3.select('svg');
+
+    svg.selectAll("text")
+      .data([input])
+      .join(
+        enter => enter.append('text').attr("fill", 'blue').text(d => d),
+        update => update.attr('fill', 'gray'),
+        exit => exit.remove()
+      )
+      .attr("y", 20)
+      .text(d => d);
   }
 }
