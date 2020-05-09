@@ -34,16 +34,10 @@ export class SVGTextRenderingApp {
     const svg = d3.select('svg');
 
     const textUpdate = svg.selectAll("text")
-      .data([input]);
-
-    const textEnter = textUpdate.enter()
-      .append('text');
-
-    textUpdate.merge(textEnter)
-      .attr("fill", 'blue')
+      .data([input])
+      .join(("text"))
+      .attr("fill", "gray")
       .text(d => d)
       .attr("y", 20);
-
-    textUpdate.exit().remove();
   }
 }
