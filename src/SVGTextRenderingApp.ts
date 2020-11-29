@@ -7,16 +7,17 @@ export class SVGTextRenderingApp {
 
         const svg = d3.select('svg');
 
-        const texts = svg.selectAll('text')
+        const texts = svg.selectAll('.svg-text')
             .data([rawInputText])
-            .join('text')
-            .attr('transform', 'translate(0, 20)')
-            .attr('fill', 'DarkSlateGray');
+            .join(enter => enter.append('text')
+                .classed('svg-text', true))
+            .attr('transform', 'translate(0, 20)');
 
         texts
-            .selectAll('tspan')
+            .selectAll('.row')
             .data(textRows)
-            .join('tspan')
+            .join(enter => enter.append('tspan')
+                .classed('row', true))
             .attr('x', 0)
             .attr('y', (d, i) => i * 20)
             .text(d => d);
